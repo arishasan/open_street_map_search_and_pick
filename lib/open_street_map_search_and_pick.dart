@@ -148,7 +148,7 @@ class _OpenStreetMapSearchAndPickState
         if (event is MapEventMoveEnd) {
           var client = http.Client();
           String url =
-              '${widget.baseUri}/reverse?format=json&lat=${event.camera.center.latitude}&lon=${event.camera.center.longitude}&zoom=18&addressdetails=1';
+              '${widget.baseUri}/reverse?format=json&lat=${event.center.latitude}&lon=${event.center.longitude}&zoom=18&addressdetails=1';
 
           var response = await client.get(Uri.parse(url));
           // var response = await client.post(Uri.parse(url));
