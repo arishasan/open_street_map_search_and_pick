@@ -102,7 +102,14 @@ class _OpenStreetMapSearchAndPickState
     String url =
         '${widget.baseUri}/reverse?format=json&lat=$latitude&lon=$longitude&zoom=18&addressdetails=1';
 
-    var response = await client.get(Uri.parse(url));
+    // var response = await client.get(Uri.parse(url));
+    var response = await client.get(
+      Uri.parse(url),
+      headers: {
+        'User-Agent': 'MyTHI/1.0 (sekolahthi@gmail.com)', 
+        'Accept': 'application/json',
+      },
+    );
     // var response = await client.post(Uri.parse(url));
     var decodedResponse =
         jsonDecode(utf8.decode(response.bodyBytes)) as Map<dynamic, dynamic>;
