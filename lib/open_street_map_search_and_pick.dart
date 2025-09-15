@@ -130,8 +130,16 @@ class _OpenStreetMapSearchAndPickState
     String url =
         '${widget.baseUri}/reverse?format=json&lat=$latitude&lon=$longitude&zoom=18&addressdetails=1';
 
-    var response = await client.get(Uri.parse(url));
+    // var response = await client.get(Uri.parse(url));
+    var response = await client.get(
+      Uri.parse(url),
+      headers: {
+        'User-Agent': 'MyTHI/1.0 (sekolahthi@gmail.com)', 
+        'Accept': 'application/json',
+      },
+    );
     // var response = await client.post(Uri.parse(url));
+    
     var decodedResponse =
         jsonDecode(utf8.decode(response.bodyBytes)) as Map<dynamic, dynamic>;
 
@@ -147,10 +155,17 @@ class _OpenStreetMapSearchAndPickState
       (event) async {
         if (event is MapEventMoveEnd) {
           var client = http.Client();
-          String url = '${widget.baseUri}/reverse?format=json&lat=${event.center.latitude}&lon=${event.center.longitude}&zoom=18&addressdetails=1';
-              // '${widget.baseUri}/reverse?format=json&lat=${event.camera.center.latitude}&lon=${event.camera.center.longitude}&zoom=18&addressdetails=1';
+          String url =
+              '${widget.baseUri}/reverse?format=json&lat=${event.center.latitude}&lon=${event.center.longitude}&zoom=18&addressdetails=1';
 
-          var response = await client.get(Uri.parse(url));
+          // var response = await client.get(Uri.parse(url));
+          var response = await client.get(
+            Uri.parse(url),
+            headers: {
+              'User-Agent': 'MyTHI/1.0 (sekolahthi@gmail.com)', 
+              'Accept': 'application/json',
+            },
+          );
           // var response = await client.post(Uri.parse(url));
           var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes))
               as Map<dynamic, dynamic>;
@@ -333,7 +348,14 @@ class _OpenStreetMapSearchAndPickState
                                 if (kDebugMode) {
                                   print(url);
                                 }
-                                var response = await client.get(Uri.parse(url));
+                                // var response = await client.get(Uri.parse(url));
+                                var response = await client.get(
+                                  Uri.parse(url),
+                                  headers: {
+                                    'User-Agent': 'MyTHI/1.0 (sekolahthi@gmail.com)', 
+                                    'Accept': 'application/json',
+                                  },
+                                );
                                 // var response = await client.post(Uri.parse(url));
                                 var decodedResponse =
                                     jsonDecode(utf8.decode(response.bodyBytes))
@@ -425,7 +447,18 @@ class _OpenStreetMapSearchAndPickState
     String url =
         '${widget.baseUri}/reverse?format=json&lat=${_mapController.center.latitude}&lon=${_mapController.center.longitude}&zoom=18&addressdetails=1';
 
-    var response = await client.get(Uri.parse(url));
+    // var response = await client.get(Uri.parse(url));
+    var response = await client.get(
+      Uri.parse(url),
+      headers: {
+        'User-Agent': 'MyTHI/1.0 (sekolahthi@gmail.com)', 
+        'Accept': 'application/json',
+      },
+    );
+
+    print("BOT");
+    print(response.body);
+
     // var response = await client.post(Uri.parse(url));
     var decodedResponse =
         jsonDecode(utf8.decode(response.bodyBytes)) as Map<dynamic, dynamic>;
